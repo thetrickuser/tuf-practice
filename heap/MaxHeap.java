@@ -1,17 +1,20 @@
 package heap;
 
-class MinHeapify {
+class MaxHeap {
 
     public static void main(String[] args) {
-        int[] nums = {2,4,3,6,5,7,8,7};
-        MinHeapify h = new MinHeapify();
-        h.minHeapify(nums, 0,7);
+        int[] nums = {12,11,10,9,8,7,6,5};
+        MaxHeap h = new MaxHeap();
+        h.heapify(nums, 0,7);
+        for (int num : nums) {
+            System.out.print(num + " ");
+        }
     }
 
-    public void minHeapify(int[] heap, int index, int val) {
+    public void heapify(int[] heap, int index, int val) {
         heap[index] = val;
         int n = heap.length;
-        if (index > 0 && heap[parent(index)] > heap[index]) {
+        if (index > 0 && heap[parent(index)] < heap[index]) {
             heapifyUp(heap, index);
         } else {
             heapifyDown(heap, index, n);
@@ -19,7 +22,7 @@ class MinHeapify {
     }
 
     private void heapifyUp(int[] heap, int index) {
-        while (index > 0 && heap[parent(index)] > heap[index]) {
+        while (index > 0 && heap[parent(index)] < heap[index]) {
             swap(heap, index, parent(index));
             index = parent(index);
         }
@@ -33,15 +36,15 @@ class MinHeapify {
         while (true) {
             int left = 2 * index + 1;
             int right = 2 * index + 2;
-            int smallest = index;
+            int largest = index;
 
-            if (left < n && heap[left] < heap[smallest]) smallest = left;
-            if (right < n && heap[right] < heap[smallest]) smallest = right;
+            if (left < n && heap[left] > heap[largest]) largest = left;
+            if (right < n && heap[right] > heap[largest]) largest = right;
 
-            if (smallest == index) break;
+            if (largest == index) break;
 
-            swap(heap, index, smallest);
-            index = smallest;
+            swap(heap, index, largest);
+            index = largest;
         }
     }
 
