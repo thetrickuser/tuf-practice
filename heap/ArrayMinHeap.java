@@ -1,11 +1,22 @@
 package heap;
 
-class MinHeap {
+class ArrayMinHeap {
 
     public static void main(String[] args) {
-        int[] nums = {2,4,3,6,5,7,8,7};
-        MinHeap h = new MinHeap();
-        h.heapify(nums, 0,7);
+        int[] nums = {5,4,3,2,1};
+        ArrayMinHeap h = new ArrayMinHeap();
+//        h.heapify(nums, 0,7);
+        h.buildMinHeap(nums);
+        for (int n: nums) {
+            System.out.println(n);
+        }
+    }
+
+    public void buildMinHeap(int[] nums) {
+        int n = nums.length;
+        for (int i=n-1; i>=0; i--) {
+            heapifyDown(nums, i, n);
+        }
     }
 
     public void heapify(int[] heap, int index, int val) {

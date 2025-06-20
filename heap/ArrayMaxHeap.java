@@ -1,13 +1,21 @@
 package heap;
 
-class MaxHeap {
+class ArrayMaxHeap {
 
     public static void main(String[] args) {
-        int[] nums = {12,11,10,9,8,7,6,5};
-        MaxHeap h = new MaxHeap();
-        h.heapify(nums, 0,7);
+        int[] nums = {1,2,3,4,5,6,7};
+        ArrayMaxHeap h = new ArrayMaxHeap();
+//        h.heapify(nums, 0,7);
+        h.buildMaxHeap(nums);
         for (int num : nums) {
             System.out.print(num + " ");
+        }
+    }
+
+    public void buildMaxHeap(int[] nums) {
+        int n = nums.length;
+        for (int i=n-1; i>=0; i--) {
+            heapifyDown(nums, i, n);
         }
     }
 
