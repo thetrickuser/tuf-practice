@@ -3,13 +3,18 @@ package heap;
 class ArrayMinHeap {
 
     public static void main(String[] args) {
-        int[] nums = {5,4,3,2,1};
+        int[] nums = {10,20,30,21,23};
         ArrayMinHeap h = new ArrayMinHeap();
-//        h.heapify(nums, 0,7);
-        h.buildMinHeap(nums);
-        for (int n: nums) {
-            System.out.println(n);
+// //        h.heapify(nums, 0,7);
+//         h.buildMinHeap(nums);
+//         for (int n: nums) {
+//             System.out.println(n);
+//         }
+        h.minToMaxHeap(nums);
+        for (int num: nums) {
+            System.out.println(num);
         }
+        // System.out.println(h.isHeap(nums));   
     }
 
     public void buildMinHeap(int[] nums) {
@@ -27,6 +32,22 @@ class ArrayMinHeap {
         } else {
             heapifyDown(heap, index, n);
         }
+    }
+
+    public boolean isHeap(int[] nums) {
+        for (int i=nums.length - 1; i>=0; i--) {
+            if (nums[parent(i)] > nums[i]) return false;
+        }
+        return true;
+    }
+
+    public int[] minToMaxHeap(int[] nums) {
+        int n = nums.length;
+        ArrayMaxHeap h = new ArrayMaxHeap();
+        for (int i=(n/2 - 1); i>=0; i--) {
+            h.heapifyDown(nums, i, n);
+        }
+        return nums;
     }
 
     private void heapifyUp(int[] heap, int index) {

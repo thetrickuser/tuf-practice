@@ -29,7 +29,7 @@ class ArrayMaxHeap {
         }
     }
 
-    private void heapifyUp(int[] heap, int index) {
+    public void heapifyUp(int[] heap, int index) {
         while (index > 0 && heap[parent(index)] < heap[index]) {
             swap(heap, index, parent(index));
             index = parent(index);
@@ -40,7 +40,7 @@ class ArrayMaxHeap {
         return (index - 1) / 2;
     }
 
-    private void heapifyDown(int[] heap, int index, int n) {
+    public void heapifyDown(int[] heap, int index, int n) {
         while (true) {
             int left = 2 * index + 1;
             int right = 2 * index + 2;
