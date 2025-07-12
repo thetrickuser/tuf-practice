@@ -31,12 +31,13 @@ public class ArraysSolution {
       k -= n;
     }
     if (k > 0) {
-      int[] temp = new int[k];
-      for (int i = 0; i < k; i++) {
-        temp[i] = nums[i];
-      }
+//      int[] temp = new int[k];
+//      for (int i = 0; i < k; i++) {
+//        temp[i] = nums[i];
+//      }
+        int[] temp = Arrays.copyOf(nums, k);
 
-      for (int i = k; i < n; i++) {
+        for (int i = k; i < n; i++) {
         nums[i - k] = nums[i];
       }
 
