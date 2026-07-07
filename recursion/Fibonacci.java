@@ -4,13 +4,14 @@
  * F(n) = F(n - 1) + F(n - 2), for n > 1.
  * Given n, calculate F(n).
  */
+public class Fibonacci {
+    public static void main(String[] args) {
+        System.out.println(new Fibonacci().fib(6));
+    }
 
-void main() {
-    System.out.println(fib(6));
-}
-
-public int fib(int n) {
-    if (n <= 1) return n;
-    return fib(n-1) + fib(n-2);
+    public int fib(int n) {
+        if (n <= 1) return n;
+        return fib(n-1) + fib(n-2);
+    }
 }
 
